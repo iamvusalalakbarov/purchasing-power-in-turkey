@@ -62,6 +62,8 @@ body .box div span {
   display: inline-block;
   font-size: 48px;
   font-weight: 700;
+  -webkit-transition: 1s ease-in;
+  transition: 1s ease-in;
 }
 
 body .box div span#percentage {

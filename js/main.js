@@ -93,6 +93,22 @@ const wageTRY = document.getElementById("wage-TRY");
 const wageUSD = document.getElementById("wage-USD");
 const percentage = document.getElementById("percentage");
 
-// yearSpan.innerText = minimumWage[i].year;
-// wageTRY.innerText = minimumWage[i].wage;
-// wageUSD.innerText = minimumWage[i].wage / minimumWage[i].dollarRate;
+let formatUSD = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+});
+
+let formatTRY = new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    minimumFractionDigits: 2
+});
+
+minimumWage.forEach(({ year, wage, dollarRate }, i) => {
+    setTimeout(() => {
+        yearSpan.innerText = year;
+        wageTRY.innerText = formatTRY.format(wage).replace(".", "-").replace(",", ".").replace("-", ",");
+        wageUSD.innerText = formatUSD.format(wage / dollarRate);
+    }, i * 1000)
+})
